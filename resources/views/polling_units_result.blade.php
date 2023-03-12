@@ -2,6 +2,7 @@
  
 @section('content')
     <div class="row">
+    @if($pu_result)
         <h4>{{ Str::upper($pu_result[0]->polling_unit_name) }} POLLING UNITS RESULT</h4>
         <table class="table table-stripped table-bordered">
             <tr>
@@ -21,5 +22,11 @@
                 <th><b>{{ $total }}</b></th>
             </tr>
         </table>
+     @else 
+     <p> No result available</p>
+     @endif
+     <dv class="col-md-12">
+        <a href="/myproject" class="btn btn-danger">Back</a>
+    </dv>
     </div>
 @stop

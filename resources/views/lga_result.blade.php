@@ -19,4 +19,7 @@
     </div>
 @else<p>No data available. </p>
 @endif
+<div>
+            <a href="lga" style="float:right;" class="btn btn-danger">Back</a>
+        </div>
 @stop
