@@ -48,6 +48,7 @@ class PollingUnitController extends Controller
         $ward = $request->input('ward');
         $polling_desc =$request->input('polling_desc');
         $party_abb =$request->input('party_abb');
+        $ipAddress = $request->ip();
         $data= array('polling_unit_name'=>$polling_unit,"ward_id"=>$ward,"lga_id"=>$lga,"polling_unit_description"=>$polling_desc,'polling_unit_id'=>1);
         $p_u = \DB::table('polling_unit')->insertGetId($data);
 
@@ -55,7 +56,7 @@ class PollingUnitController extends Controller
             $partyscore = $request->input('partyscore')[$key] ? $request->input('partyscore')[$key] : 0;
             $p_abbr = $p;
 
-            $data_= array('polling_unit_uniqueid'=>$p_u,"party_abbreviation"=>$p_abbr,"party_score"=>$partyscore,"entered_by_user"=>'Admin','date_entered'=>date('Y-m-d H:i:s'));
+            $data_= array('polling_unit_uniqueid'=>$p_u,"party_abbreviation"=>$p_abbr,"party_score"=>$partyscore,"entered_by_user"=>'Admin','date_entered'=>date('Y-m-d H:i:s'),'user_ip_address'=>$ipAddress);
            $inserted = \DB::table('announced_pu_results')->insert($data_);
         }
         
